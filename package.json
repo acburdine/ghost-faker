@@ -1,0 +1,28 @@
+{
+  "name": "ghost-faker",
+  "version": "0.1.0",
+  "description": "a simple script for setting up a ghost blog with fake data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acburdine/ghost-faker.git"
+  },
+  "keywords": [
+    "ghost"
+  ],
+  "author": "Austin Burdine <acburdine@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/acburdine/ghost-faker/issues"
+  },
+  "homepage": "https://github.com/acburdine/ghost-faker#readme",
+  "dependencies": {
+    "bluebird": "^2.10.2",
+    "lodash": "^3.10.1",
+    "minimist": "^1.2.0",
+    "request": "^2.65.0"
+  }
+}
