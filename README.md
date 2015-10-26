@@ -1,6 +1,6 @@
 # Ghost-Faker
 
-A simple script to set up a Ghost blog and stub out dummy data.
+A simple script to set up a [Ghost](https://ghost.org/) blog and enter fake data (posts, users, etc.).
 
 ---
 
