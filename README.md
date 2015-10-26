@@ -21,9 +21,9 @@ npm install --save-dev ghost-faker
 ```
 
 ```javascript
-    var ghostFaker = require('ghost-faker');
+var ghostFaker = require('ghost-faker');
 
-    ghostFaker(options);
+ghostFaker(options);
 ```
 
 ---
