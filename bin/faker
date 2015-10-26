@@ -5,4 +5,4 @@ process.title = 'ghost-faker';
 
 var args = process.argv.slice(2);
 
-require('../lib/cli')(args);
+require('../index')(args);

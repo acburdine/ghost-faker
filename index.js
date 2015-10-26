@@ -71,7 +71,7 @@ module.exports = function (args) {
 
     rootUrl = rootUrl.replace(/\/?$/, '/');
 
-    setupFunctions.getIdAndSecret().then(function () {
+    return setupFunctions.getIdAndSecret().then(function () {
         return setupFunctions.setup();
     });
 }
