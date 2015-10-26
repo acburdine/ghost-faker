@@ -2,7 +2,7 @@
   "name": "ghost-faker",
   "version": "0.1.0",
   "description": "a simple script for setting up a ghost blog with fake data",
-  "main": "index.js",
+  "main": "./lib/cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,9 +18,14 @@
   "bugs": {
     "url": "https://github.com/acburdine/ghost-faker/issues"
   },
+  "bin": {
+    "ghostfaker": "bin/faker"
+  },
   "homepage": "https://github.com/acburdine/ghost-faker#readme",
   "dependencies": {
     "bluebird": "^2.10.2",
+    "cheerio": "^0.19.0",
+    "faker": "^3.0.1",
     "lodash": "^3.10.1",
     "minimist": "^1.2.0",
     "request": "^2.65.0"
