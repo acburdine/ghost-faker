@@ -28,15 +28,15 @@ functions = {
     },
 
     setup: function () {
-        var email = faker.internet.email(),
-            password = faker.internet.password();
+        var email = options.email || faker.internet.email(),
+            password = options.password || faker.internet.password();
 
         return post(formUrl('authentication/setup/'), {form: {
             setup: [{
-                name: faker.name.findName(),
+                name: options.userName || faker.name.findName(),
                 email: email,
                 password: password,
-                blogTitle: faker.lorem.words().join(' ')
+                blogTitle: options.blogTitle || faker.lorem.words().join(' ')
             }]
         }}).then(function () {
             blogDetails.email = email;
@@ -62,7 +62,7 @@ functions = {
             process.exit(1);
         });
     }
-}
+};
 
 module.exports = function (args) {
     var isCli = false;

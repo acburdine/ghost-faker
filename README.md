@@ -38,4 +38,12 @@ Allowed options are:
 
 *Note: when using ghost-faker through the command line, the url can also be passed as the second argument after 'ghost-faker', e.g.* `ghostfaker <url>`
 
+- email - This is the email that the blog owner account will be setup with (default is a randomly generated email)
+
+- password - The password of the main owner account (default is a randomly generated password)
+
+- userName - The full name of the owner user (default is a randomly generated name)
+
+- blogTitle - The title of the blog (default is a randomly generated word sequence)
+
 More options coming soon...
