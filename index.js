@@ -8,13 +8,13 @@ var _ = require('lodash'),
     post = Promise.promisify(request.post),
     put = Promise.promisify(request.put),
     blogDetails = {},
-    setupFunctions, rootUrl, options;
+    functions, rootUrl, options;
 
 function formUrl(apiString) {
     return rootUrl + 'ghost/api/v0.1/' + apiString;
 }
 
-setupFunctions = {
+functions = {
     getIdAndSecret: function () {
         return get(rootUrl + 'ghost/setup/one/').then(function (res) {
             var $ = cheerio.load(res[1]);
@@ -45,6 +45,22 @@ setupFunctions = {
             console.error('Setup failed, exiting.');
             process.exit(1);
         });
+    },
+
+    login: function () {
+        return post(formUrl('authentication/token/'), {json: {
+            grant_type: 'password',
+            username: blogDetails.email,
+            password: blogDetails.password,
+            client_id: blogDetails.clientId,
+            client_secret: blogDetails.clientSecret
+        }}).then(function (res) {
+            res = res[1];
+            blogDetails.accessToken = res.access_token;
+        }).catch(function () {
+            console.error('Login failed, exiting.');
+            process.exit(1);
+        });
     }
 }
 
@@ -71,7 +87,9 @@ module.exports = function (args) {
 
     rootUrl = rootUrl.replace(/\/?$/, '/');
 
-    return setupFunctions.getIdAndSecret().then(function () {
-        return setupFunctions.setup();
+    return functions.getIdAndSecret().then(function () {
+        return functions.setup();
+    }).then(function () {
+        return functions.login();
     });
 }
