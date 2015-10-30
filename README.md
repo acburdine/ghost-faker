@@ -46,4 +46,8 @@ Allowed options are:
 
 - blogTitle - The title of the blog (default is a randomly generated word sequence)
 
+- posts - If you wish to generate posts, specify the number of posts here (default number if --posts argument is supplied is 5)
+
+- image - If you don't want images to be added to posts, either set this to false or supply `--no-image`
+
 More options coming soon...
