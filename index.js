@@ -1,4 +1,5 @@
 var _ = require('lodash'),
+    fs = require('fs'),
     minimist = require('minimist'),
     request = require('request'),
     Promise = require('bluebird'),
@@ -90,21 +91,36 @@ functions = {
             var title = (Math.random() + 0.5) > 1 ? faker.lorem.sentence() : faker.lorem.words().join(' '),
                 content = (Math.random() + 0.1) > 1 ? faker.lorem.paragraph() : faker.lorem.paragraphs();
 
-            posts.push(get(requestOpts('slugs/post/' + encodeURIComponent(title).replace('.', '') + '/', {json: true})).then(function (result) {
-                slug = result[1].slugs[0].slug;
-
-                return post(requestOpts('posts/?include=tags', {json: {posts: [{
+            if (options['no-image']) {
+                posts.push(post(requestOpts('posts/?include=tags', {json: {posts: [{
                     author: "" + blogDetails.authorId,
                     featured: false,
                     markdown: content,
-                    slug: slug,
+                    slug: 'test-post-' + i,
                     title: title,
-                    status: 'published',
-
-                }]}})).then(function (result) {
-                    // console.log(result[0]);
-                });
-            }));
+                    status: 'published'
+                }]}})));
+            } else {
+                var image = faker.image.image();
+                posts.push(post(requestOpts('uploads/', {formData: {
+                    uploadimage: {
+                        value: fs.createReadStream(__dirname + '/images/ghost.png'),
+                        options: {
+                            filename: 'image-' + i + '.png'
+                        }
+                    }
+                }})).then(function (response) {
+                    return post(requestOpts('posts/?include=tags', {json: {posts: [{
+                        author: "" + blogDetails.authorId,
+                        featured: false,
+                        markdown: content,
+                        slug: 'test-post-' + (Math.random() * 1000),
+                        title: title,
+                        status: 'published',
+                        image: response[1]
+                    }]}}));
+                }));
+            }
         }
 
         return Promise.all(posts);
