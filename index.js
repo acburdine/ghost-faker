@@ -85,13 +85,17 @@ functions = {
             return Promise.resolve();
         }
 
+        if (options.posts === true) {
+            options.posts = 5;
+        }
+
         var posts = [];
 
         for(var i = 0; i < options.posts; i++) {
             var title = (Math.random() + 0.5) > 1 ? faker.lorem.sentence() : faker.lorem.words().join(' '),
                 content = (Math.random() + 0.1) > 1 ? faker.lorem.paragraph() : faker.lorem.paragraphs();
 
-            if (options['no-image']) {
+            if (options['image'] === false) {
                 posts.push(post(requestOpts('posts/?include=tags', {json: {posts: [{
                     author: "" + blogDetails.authorId,
                     featured: false,
@@ -101,7 +105,6 @@ functions = {
                     status: 'published'
                 }]}})));
             } else {
-                var image = faker.image.image();
                 posts.push(post(requestOpts('uploads/', {formData: {
                     uploadimage: {
                         value: fs.createReadStream(__dirname + '/images/ghost.png'),
