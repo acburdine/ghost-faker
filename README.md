@@ -1,5 +1,8 @@
 # Ghost-Faker
 
+[![Dependency Status][david-badge]][david-badge-url]
+[![npm](https://img.shields.io/npm/v/ghost-faker.svg)][npm-badge-url]
+
 A simple script to set up a [Ghost](https://ghost.org/) blog and enter fake data (posts, users, etc.).
 
 ---
@@ -51,3 +54,8 @@ Allowed options are:
 - image - If you don't want images to be added to posts, either set this to false or supply `--no-image`
 
 More options coming soon...
+
+
+[david-badge]: https://david-dm.org/ghost-faker/ghost-faker.svg
+[david-badge-url]: https://david-dm.org/acburdine/ghost-faker
+[npm-badge-url]: https://www.npmjs.com/package/ghost-faker
