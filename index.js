@@ -5,9 +5,9 @@ var _ = require('lodash'),
     Promise = require('bluebird'),
     cheerio = require('cheerio'),
     faker = require('faker'),
-    get = Promise.promisify(request.get),
-    post = Promise.promisify(request.post),
-    put = Promise.promisify(request.put),
+    get = Promise.promisify(request.get, {multiArgs: true}),
+    post = Promise.promisify(request.post, {multiArgs: true}),
+    put = Promise.promisify(request.put, {multiArgs: true}),
     blogDetails = {},
     functions, rootUrl, options;
 
