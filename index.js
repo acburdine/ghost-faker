@@ -13,7 +13,8 @@ var _ = require('lodash'),
 
 function requestOpts(apiString, opts) {
     var defaultOpts = {
-        uri: rootUrl + 'ghost/api/v0.1/' + apiString
+        uri: rootUrl + 'ghost/api/v0.1/' + apiString,
+        Origin: rootUrl
     };
 
     if (blogDetails.accessToken) {
