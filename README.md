@@ -56,6 +56,6 @@ Allowed options are:
 More options coming soon...
 
 
-[david-badge]: https://david-dm.org/ghost-faker/ghost-faker.svg
+[david-badge]: https://david-dm.org/acburdine/ghost-faker.svg
 [david-badge-url]: https://david-dm.org/acburdine/ghost-faker
 [npm-badge-url]: https://www.npmjs.com/package/ghost-faker
