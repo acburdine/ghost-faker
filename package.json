@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/acburdine/ghost-faker#readme",
   "dependencies": {
-    "bluebird": "3.4.0",
+    "bluebird": "3.4.1",
     "cheerio": "0.21.0",
     "faker": "3.1.0",
     "lodash": "4.13.1",
